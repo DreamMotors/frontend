@@ -1,0 +1,104 @@
+/* style.css */
+*{
+    margin-top: 10px;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+.body {
+    margin-top: 10px;
+    max-width: 100%;
+    width: 100vw;
+    -webkit-text-size-adjust: 100%;
+}
+/* Body styles */
+body {
+
+  margin: 0;
+  padding: 40px;
+}
+
+/* Header styles */
+h1 {
+    margin-top: 10px;
+  color: #333;
+  text-align: center;
+}
+
+/* Form styles */
+div {
+    margin-top: 10px;
+  margin-bottom: 10px;
+}
+ul{
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+label {
+    margin-top: 10px;
+  font-weight: bold;
+}
+
+input[type="number"],
+select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Checkboxes styles */
+.checkers {
+  margin-top: 20px;
+}
+
+/* Result styles */
+.itog,
+.rashody {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Mobile optimization */
+@media screen and (max-width: 700px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  input[type="number"],
+  select {
+    font-size: 14px;
+  }
+
+  .checkers {
+    margin-top: 10px;
+  }
+
+  .itog,
+  .rashody {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    background-color: silver;
+    width: 60%;
+    margin: auto;
+    height:2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #666;
+    opacity: 0.5;
+    width: 20px;
+    border-radius: 10px;
+    height: 20px;
+}
+

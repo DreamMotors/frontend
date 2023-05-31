@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Таможенный калькулятор для автомобилей</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Таможенный калькулятор для автомобилей</h1>
+<div >
+   <label for="dollorcourse">Курс $</label>
+   <input type="number" value="440" id="dollorcourse" oninput="calculateCustoms()">
+</div>
+  <div>
+    <label for="car-value">Стоимость автомобиля ($):</label>
+    <input type="number" id="car-value" oninput="calculateCustoms()">
+  </div>
+
+    
+  <h4>Средняя сумму доставка автомобиля автовозом: Грузия - Казахстан = 1500$, ОАЭ - Казахстан = 2000$
+</h4>
+  <div>
+    <input id="num" type="range" value="1500" step="100" max="10000" oninput="this.nextElementSibling.value = this.value, calculateCustoms()"  >
+<output id="rangenum" >1500</output>
+<div id="customs-result"></div>
+  </div>
+
+
+
+  <h4>
+   Тарифы таможенной очистки
+</h4>
+  <div>
+   <select id="tarifSelector" onchange="getTarif()">
+   <option value="1.15"  selected="selected"  >Автомобили не старше 7 лет(+15%) </option>
+   <option value="1.18 " >Автомобили старше 7 лет(+18%)</option>
+   <option value="1.10  " >Автомобили до 3 лет, объемом выше 4,2(+10%) </option>
+</select>
+</div>
+<ul>Оплата НДС, +12% к стоимости авто
+</ul>
+<ul>Оплата таможенного сбора, +20 000 тг</ul>
+  
+<h4>Год выпуска автомобиля
+</h4>
+
+<div>
+   <select id="yearSelector" onchange="getYear()" >
+   <option  selected="selected" value="863">2023 </option>
+   <option value="863"> 2022 </option>
+   <option value="172500">2021 </option>
+   <option value="1725000">2020 </option>
+   <option value="1725000">2019 </option>
+   <option value="1725000">2018 </option>
+   <option value="1725000">2017 </option>
+   <option value="1725000">2016 </option>
+   <option value="1725000">2015 </option>
+   <option value="1725000">2014 </option>
+   <option value="1725000">2013 </option>
+   <option value="1725000">2012 </option>
+   <option value="1725000">2011 </option>
+   <option value="1725000">2010 </option>
+</select>
+</div>
+<h4>Оплата первичной регистрации.</h4>
+<h5>Расчёт = коэффициент * МРП</h5>
+<ul>До 2 лет - 0.25 * 3 450 тг.</ul>
+<ul>От 2 до 3 лет - 50 * 3 450 тг.</ul>
+<ul>От 3 лет - 500 * 3 450 тг.</ul>
+
+
+<h4>Оплата первичной регистрации</h4>
+<h5>Утилизационный платеж = коэффициент * МРП</h5>
+<ul>0 см3 < объем <=1000 см3 - 75 * 3 450 тг.</ul>
+<ul>1000 см3 < объем <=2000 см3 - 175 * 3 450 тг.</ul>
+<ul>2000 см3 < объем <=3000 см3 - 250 * 3 450 тг.</ul>
+<ul>3000 см3 < объем - 575 * 3 450 тг.</ul>
+
+<h4>
+   Объем двигателя в см3
+</h4>
+<div>
+   <select id="Util" onchange="getUtil()">
+   <option value=" 0">Электродвигатель </option>
+   <option value=" 258750">500 </option>
+   <option value=" 258750">800 </option>
+   <option value=" 285750">1000 </option>
+   <option value=" 603750">1100 </option>
+   <option value=" 603750">1200 </option>
+   <option value=" 603750">1300 </option>
+   <option value=" 603750">1400 </option>
+   <option value=" 603750">1500 </option>
+   <option value=" 603750">1600 </option>
+   <option value=" 603750">1700 </option>
+   <option value=" 603750">1800 </option>
+   <option value=" 603750">1900 </option>
+   <option value=" 603750">2000 </option>
+   <option value=" 862500">2100 </option>
+   <option value=" 862500">2200 </option>
+   <option value=" 862500">2300 </option>
+   <option selected="selected" value=" 862500">2400 </option>
+   <option value=" 862500">2500 </option>
+   <option value=" 862500">2600 </option>
+   <option value=" 862500">2700 </option>
+   <option value=" 862500">2800 </option>
+   <option value=" 862500">2900 </option>
+   <option value=" 862500">3000 </option>
+   <option value=" 2293750">3100 </option>
+   <option value=" 2303750">3200 </option>
+   <option value=" 2313750">3300 </option>
+   <option value=" 2323750">3400 </option>
+   <option value=" 2333750">3500 </option>
+   <option value=" 2343750">3600 </option>
+   <option value=" 2353750">3700 </option>
+   <option value=" 2363750">3800 </option>
+   <option value=" 2373750">3900 </option>
+   <option value=" 2383750">4000 </option>
+   <option value=" 2393750">4100 </option>
+   <option value=" 2403750">4200 </option>
+   <option value=" 2413750">4300 </option>
+   <option value=" 2423750">4400 </option>
+   <option value=" 2433750">4500 </option>
+   <option value=" 2443750">4600 </option>
+   <option value=" 2453750">4700 </option>
+   <option value=" 2463750">4800 </option>
+   <option value=" 2473750">4900 </option>
+   <option value=" 2483750">5000 </option>
+   <option value=" 2493750">5100 </option>
+   <option value=" 2503750">5200 </option>
+   <option value=" 2513750">5300 </option>
+   <option value=" 2523750">5400 </option>
+   <option value=" 2533750">5500 </option>
+   <option value=" 2543750">5600 </option>
+   <option value=" 2553750">5700 </option>
+   <option value=" 2563750">5800 </option>
+   <option value=" 2573750">5900 </option>
+   <option value=" 2583750">6000 </option>
+   <option value=" 2593750">6100 </option>
+   <option value=" 2603750">6200 </option>
+   <option value=" 2613750">6300 </option>
+   <option value=" 2623750">6400 </option>
+   <option value=" 2633750">6500 </option>
+</select>
+</div>
+<h5>Оплата акциза :
+объем до 3000 см3 - 0 тг.
+объем больше 3000 см3 - 100тг/см3. Пример: 3500см3 * 100тг/см3= 350 000 тг.</h5>
+
+
+
+
+
+<h4>Дополнительные услуги</h4>
+
+<section class="checkers">
+   <div>
+    <input type="checkbox" id="SBKTS" onchange="sbktsChekers()" />
+    <label for="SBKTS">СБКТС (свидетельство о безопасности конструкции транспортного средства) + 50 000 тг.</label>
+  </div>
+  <div>
+    <input type="checkbox" id="SOS" onchange="sosChekers()" />
+    <label for="SOS">Опционально!: Установка кнопки SOS (отмена установки кнопки SOS действует до 01.02.2024 года) + 200 000 тг.</label>
+  </div>
+</section>
+
+<div class="itog" id="Itog"> Итого: </div>
+<div class="rashody" id="ras"> Расходы по таможенной очистке: </div>
+<h1><a href="../index.html">Главная</a></h1>
+<script src="js.js"></script>
+</body>
+</html>
